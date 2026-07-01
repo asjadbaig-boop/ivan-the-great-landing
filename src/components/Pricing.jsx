@@ -2,14 +2,14 @@ import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 
 const POPULAR_FEATURES = [
-  "Ivan's Full Video Library + SOB Curriculum",
+  "Ivan's Full Content Library, learn how to record, edit and post",
   'SOB Community (150+ active barbers)',
   'SOB OS + Free Booking Software',
   'Weekly group coaching content',
 ]
 
 const MENTORSHIP_FEATURES = [
-  'Direct 1:1 mentorship with Ivan',
+  'Hands on in person training with Ivan',
   '4 weekly calls with full coaching team',
   'Private communication channel with Ivan',
   'Full ELITE Course + Content Playbook',
@@ -18,7 +18,8 @@ const MENTORSHIP_FEATURES = [
 
 export default function Pricing() {
   return (
-    <section className="px-5 py-16 md:px-8 md:py-20 lg:py-28">
+    <section className="relative bg-[#0a0a0a]/60 px-5 py-16 md:px-8 md:py-20 lg:py-28">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#DC2626]/3 to-transparent pointer-events-none" />
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12 md:mb-14">
           <p className="text-primary uppercase text-xs md:text-sm font-bold tracking-widest">

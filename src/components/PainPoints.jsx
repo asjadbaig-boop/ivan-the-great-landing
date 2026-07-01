@@ -26,7 +26,7 @@ const CARDS = [
 
 export default function PainPoints() {
   return (
-    <section id="about" className="px-5 py-16 md:px-8 md:py-20 lg:py-28">
+    <section id="about" className="bg-[#0a0a0a]/60 px-5 py-16 md:px-8 md:py-20 lg:py-28">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-primary uppercase text-xs md:text-sm font-bold tracking-widest">
@@ -52,7 +52,7 @@ export default function PainPoints() {
                 viewport={{ once: true, amount: 0.3, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
                 whileHover={{ y: -4 }}
-                className="group bg-card border border-border rounded-xl p-5 md:p-6 transition-all duration-150 hover:border-primary active:border-primary active:scale-[0.98] cursor-pointer"
+                className="group bg-card/80 backdrop-blur-sm border border-border rounded-xl p-5 md:p-6 transition-all duration-150 hover:border-primary active:border-primary active:scale-[0.98] cursor-pointer"
               >
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 transition-colors duration-200 group-hover:bg-primary/20">
                   <Icon size={20} className="text-primary" />

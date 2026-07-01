@@ -14,11 +14,22 @@ const AVATAR_INITIALS = ['JD', 'MK', 'TR']
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 pb-16 px-5 md:pt-32 md:pb-24 md:px-8 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#1a0a0a] via-dark to-dark" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/20 rounded-full blur-[120px] -z-10" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-5 md:pt-32 md:pb-24 md:px-8 overflow-hidden">
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&q=80&auto=format&fit=crop')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#1a0a0a',
+        }}
+      />
+      <div className="absolute inset-0 bg-[#0a0a0a]/80" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/20 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
 
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 flex flex-col items-center text-center w-full max-w-4xl mx-auto">
         <h1 className="font-heading uppercase text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight text-white">
           <motion.span
             className="block"
@@ -75,26 +86,24 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.8, ease: 'easeOut' }}
-          className="mt-10 mx-4 sm:mx-auto sm:max-w-2xl"
-        >
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-border bg-card group cursor-pointer active:scale-[0.99] transition-transform duration-150">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a]" />
+        {/* Video Placeholder */}
+        <div className="w-full max-w-3xl mx-auto mt-10 px-4">
+          <div className="relative w-full rounded-2xl overflow-hidden bg-[#111111]/80 backdrop-blur-sm border border-[#1f1f1f]" style={{ aspectRatio: '16/9' }}>
+
+            {/* Play button centered */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.15 }}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/40"
-              >
-                <Play size={28} className="text-white fill-white ml-0.5" />
-              </motion.div>
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#DC2626] flex items-center justify-center cursor-pointer hover:bg-[#b91c1c] hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg shadow-[#DC2626]/30">
+                <Play className="w-7 h-7 md:w-8 md:h-8 text-white ml-1" fill="white" />
+              </div>
             </div>
+
+            {/* Video label */}
+            <div className="absolute bottom-4 left-0 right-0 text-center">
+              <span className="text-[#A0A0A0] text-sm">Watch Ivan's Story</span>
+            </div>
+
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -5,7 +5,7 @@ import ThankYouNoInvest from './pages/ThankYouNoInvest'
 
 function App() {
   return (
-    <div className="bg-dark min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/thank-you-invest" element={<ThankYouInvest />} />

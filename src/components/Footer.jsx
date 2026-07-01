@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function Footer() {
   return (
-    <footer className="px-5 py-12 md:px-8 md:py-16 border-t border-border flex flex-col items-center text-center">
+    <footer className="bg-[#0a0a0a]/95 px-5 py-12 md:px-8 md:py-16 border-t border-border flex flex-col items-center text-center">
       <span className="font-heading uppercase text-lg md:text-2xl text-white">
         IVAN THE GREAT
       </span>

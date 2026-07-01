@@ -119,7 +119,8 @@ function MemberCard({ member, index }) {
 
 export default function MemberTransformations() {
   return (
-    <section className="px-5 py-16 md:px-8 md:py-20 lg:py-28">
+    <section className="relative bg-[#0a0a0a]/70 px-5 py-16 md:px-8 md:py-20 lg:py-28">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#DC2626]/3 to-transparent pointer-events-none" />
       <div className="max-w-4xl mx-auto">
         <p className="text-muted uppercase text-xs md:text-sm font-semibold tracking-widest text-center">
           Meet Our Members

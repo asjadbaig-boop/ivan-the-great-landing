@@ -1,112 +1,92 @@
-import { motion } from 'framer-motion'
-import { ThumbsUp, MessageCircle, User } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-const POSTS = [
+const testimonials = [
   {
-    name: 'Kevin Luk',
-    win: 'Price increase from $75 to $115 in 2 months',
-    body: 'Increased my prices to $115 and i am still currently booked out for the next 4 weeks. Consistently posting 2-3 times a week for the past couple months.',
-    likes: 6,
-    comments: 7,
+    image: '/testimonials/ivan1.jpg',
+    name: 'Alexis Hernandez Martinez',
+    win: 'Price Raise, $45 to $60 per cut',
   },
   {
-    name: 'Wai Tat',
-    win: 'Making $3.6K in 5 days',
-    body: 'Did 40 clients this week! Charging $70 for cut, $90 for beard and $300-400 for perm. My goal is 5k a week!!',
-    likes: 16,
-    comments: 14,
+    image: '/testimonials/ivan2.jpeg',
+    name: 'Jay Soto',
+    win: 'Jan. Win, 85% booked all month',
   },
   {
-    name: 'Brian Liao',
-    win: 'Finally hit 10k/month',
-    body: 'YO GUYS WE DID IT. Big thanks to Ivan and his team bro. Joined making 6k per month scaling all the way to $11150 this August.',
-    likes: 9,
-    comments: 11,
+    image: '/testimonials/ivan3.jpg',
+    name: 'Kevin Kilby',
+    win: '5 months in the program, 100% booked',
   },
   {
-    name: 'Brooklyn Fisher',
-    win: 'PRICE INCREASE ✅',
-    body: 'Just got off the private call and increased my prices from 70 to 120! The work doesn\'t stop now!',
-    likes: 11,
-    comments: 19,
+    image: '/testimonials/ivan4.jpg',
+    name: 'Manny Morales',
+    win: 'First SPIKE, 34k views in a day',
   },
 ]
 
-function getInitials(name) {
-  return name
-    .split(' ')
-    .map((part) => part[0])
-    .join('')
-    .toUpperCase()
-}
-
 export default function CommunityWins() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+
   return (
-    <section className="px-5 py-16 md:px-8 md:py-20 lg:py-28">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-primary uppercase text-xs md:text-sm font-bold tracking-widest">
-            Inside the Community
-          </p>
-          <h2 className="mt-3 font-heading uppercase text-3xl md:text-4xl lg:text-5xl text-white">
-            Real Wins. Every Week.
-          </h2>
-        </div>
+    <section className="relative py-16 md:py-24 px-5 md:px-8 bg-[#0a0a0a]/60">
+      <div className="max-w-6xl mx-auto">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-          {POSTS.map((post, i) => (
+        {/* Section Label */}
+        <p className="text-[#DC2626] text-xs font-bold uppercase tracking-widest text-center mb-3">
+          INSIDE THE COMMUNITY
+        </p>
+
+        {/* Heading */}
+        <h2 className="text-3xl md:text-5xl font-black text-white text-center uppercase mb-12">
+          Real Wins. Every Week.
+        </h2>
+
+        {/* Image Grid */}
+        <div
+          ref={ref}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
+        >
+          {testimonials.map((item, i) => (
             <motion.div
-              key={post.name}
+              key={i}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-              className="bg-white text-black rounded-2xl p-4 md:p-5 shadow-lg"
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="relative group rounded-2xl overflow-hidden"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs">
-                  {getInitials(post.name)}
-                </div>
-                <div>
-                  <div className="font-bold text-sm">{post.name}</div>
-                  <div className="text-xs text-[#666]">in 🚀 | Major Wins</div>
-                </div>
-              </div>
+              {/* Gradient border effect, outer glow */}
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-[#DC2626]/60 via-[#DC2626]/10 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-300 z-0" />
 
-              <h3 className="mt-4 font-bold text-sm leading-snug">{post.win}</h3>
-              <p className="mt-2 text-sm text-[#444] leading-relaxed">{post.body}</p>
+              {/* Card inner */}
+              <div className="relative z-10 rounded-2xl overflow-hidden bg-[#111111]">
 
-              <div className="mt-4 pt-3 border-t border-[#eee] flex flex-wrap items-center justify-between gap-2 text-xs text-[#666]">
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1">
-                    <ThumbsUp size={14} /> {post.likes}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <MessageCircle size={14} /> {post.comments}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {[0, 1, 2].map((j) => (
-                      <div
-                        key={j}
-                        className="w-6 h-6 rounded-full bg-[#e5e5e5] border-2 border-white flex items-center justify-center text-[#999]"
-                      >
-                        <User size={12} />
-                      </div>
-                    ))}
+                {/* Fixed height image container */}
+                <div className="relative w-full overflow-hidden sm:h-80 h-64">
+                  <img
+                    src={item.image}
+                    alt={`${item.name} testimonial`}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+
+                  {/* Bottom gradient overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent pt-16 pb-4 px-4">
+                    <p className="text-white font-bold text-sm">{item.name}</p>
+                    <p className="text-[#DC2626] text-xs font-medium mt-0.5">{item.win}</p>
                   </div>
-                  <span>Last comment 2d ago</span>
                 </div>
+
               </div>
             </motion.div>
           ))}
         </div>
 
-        <p className="mt-10 text-center italic text-muted text-sm md:text-base px-2">
-          These results came from barbers who joined the community and
-          followed the system. Will you be next?
+        {/* Bottom text */}
+        <p className="text-center text-[#A0A0A0] text-sm italic mt-12 max-w-2xl mx-auto">
+          These results came from barbers who joined the community and followed the system. Will you be next?
         </p>
+
       </div>
     </section>
   )

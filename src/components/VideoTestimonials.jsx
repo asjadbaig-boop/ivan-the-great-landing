@@ -10,7 +10,7 @@ const VIDEOS = [
 
 export default function VideoTestimonials() {
   return (
-    <section className="px-5 py-16 md:px-8 md:py-20 lg:py-28">
+    <section className="bg-[#0a0a0a]/60 px-5 py-16 md:px-8 md:py-20 lg:py-28">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-primary uppercase text-xs md:text-sm font-bold tracking-widest">
@@ -30,7 +30,7 @@ export default function VideoTestimonials() {
               viewport={{ once: true, amount: 0.3, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               whileHover={{ boxShadow: '0 0 24px rgba(220,38,38,0.25)' }}
-              className="bg-card rounded-xl overflow-hidden group active:scale-[0.98] transition-transform duration-150 cursor-pointer"
+              className="bg-card/80 backdrop-blur-sm rounded-xl overflow-hidden group active:scale-[0.98] transition-transform duration-150 cursor-pointer"
             >
               <div className="relative aspect-video bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] flex items-center justify-center">
                 <motion.div

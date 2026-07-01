@@ -14,7 +14,8 @@ const fadeUp = {
 
 export default function TheCoach() {
   return (
-    <section className="px-5 py-16 md:px-8 md:py-20 lg:py-28">
+    <section className="relative bg-[#0a0a0a]/70 px-5 py-16 md:px-8 md:py-20 lg:py-28">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#DC2626]/3 to-transparent pointer-events-none" />
       <div className="max-w-6xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
