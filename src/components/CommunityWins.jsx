@@ -3,24 +3,24 @@ import { useRef } from 'react'
 
 const testimonials = [
   {
-    image: '/testimonials/ivan1.jpg',
-    name: 'Alexis Hernandez Martinez',
-    win: 'Price Raise, $45 to $60 per cut',
+    image: '/testimonials/ivan1.png',
+    name: 'Landon Ziegler',
+    win: 'Tripled income — $317 to making more every month',
   },
   {
-    image: '/testimonials/ivan2.jpeg',
-    name: 'Jay Soto',
-    win: 'Jan. Win, 85% booked all month',
+    image: '/testimonials/ivan2.png',
+    name: 'Ivan Barajas',
+    win: 'First month on SOB — $1,400 to $2,800 per month',
   },
   {
-    image: '/testimonials/ivan3.jpg',
-    name: 'Kevin Kilby',
-    win: '5 months in the program, 100% booked',
+    image: '/testimonials/ivan3.png',
+    name: 'Abdiel Hidalgo',
+    win: '10k months club — 40 new clients, 100% booked',
   },
   {
-    image: '/testimonials/ivan4.jpg',
+    image: '/testimonials/ivan4.png',
     name: 'Manny Morales',
-    win: 'First SPIKE, 34k views in a day',
+    win: 'Posted $820 income proof — hitting $85k goal',
   },
 ]
 
@@ -61,8 +61,8 @@ export default function CommunityWins() {
               {/* Card inner */}
               <div className="relative z-10 rounded-2xl overflow-hidden bg-[#111111]">
 
-                {/* Fixed height image container */}
-                <div className="relative w-full overflow-hidden sm:h-80 h-64">
+                {/* Square image container */}
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1' }}>
                   <img
                     src={item.image}
                     alt={`${item.name} testimonial`}

@@ -6,12 +6,21 @@ import { ArrowRight } from 'lucide-react'
 export default function LeadMagnetForm() {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
+  const [avgPrice, setAvgPrice] = useState('')
+  const [situation, setSituation] = useState('')
+  const [state, setState] = useState('')
+  const [city, setCity] = useState('')
   const [readyToInvest, setReadyToInvest] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!firstName || !email || !readyToInvest) return
+    if (!firstName || !email || !avgPrice || !situation || !state || !city || !readyToInvest) {
+      setError('Please fill out all fields before continuing.')
+      return
+    }
+    setError('')
     if (readyToInvest === 'yes') {
       navigate('/thank-you-invest')
     } else {
@@ -55,6 +64,54 @@ export default function LeadMagnetForm() {
             className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-4 text-white text-base placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
           />
 
+          <input
+            type="number"
+            placeholder="Your Average Haircut Price ($)"
+            value={avgPrice}
+            onChange={(e) => setAvgPrice(e.target.value)}
+            className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-4 text-white text-base placeholder-gray-500 focus:outline-none focus:border-[#DC2626] transition"
+          />
+
+          <div className="relative">
+            <select
+              value={situation}
+              onChange={(e) => setSituation(e.target.value)}
+              className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-4 text-base focus:outline-none focus:border-[#DC2626] transition appearance-none cursor-pointer"
+              style={{ color: situation ? 'white' : '#6b7280' }}
+            >
+              <option value="" disabled>What is your current situation?</option>
+              <option value="cutting-from-home">Cutting from Home</option>
+              <option value="barber-school">In Barber School</option>
+              <option value="working-in-shop">Working in a Barber Shop</option>
+              <option value="booth-rental">Booth Rental</option>
+              <option value="shop-owner">Shop Owner</option>
+              <option value="freelance">Freelancing / Mobile Barber</option>
+            </select>
+
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+
+          <div className="flex flex-col xs:flex-row gap-3">
+            <input
+              type="text"
+              placeholder="Your State"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              className="w-full xs:w-1/2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-4 text-white text-base placeholder-gray-500 focus:outline-none focus:border-[#DC2626] transition"
+            />
+            <input
+              type="text"
+              placeholder="Your City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="w-full xs:w-1/2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-4 text-white text-base placeholder-gray-500 focus:outline-none focus:border-[#DC2626] transition"
+            />
+          </div>
+
           <div>
             <p className="text-white text-sm font-medium mb-3">
               Are you ready to invest in your barber brand?
@@ -84,6 +141,10 @@ export default function LeadMagnetForm() {
               </button>
             </div>
           </div>
+
+          {error && (
+            <p className="text-[#DC2626] text-sm text-center">{error}</p>
+          )}
 
           <motion.button
             type="submit"

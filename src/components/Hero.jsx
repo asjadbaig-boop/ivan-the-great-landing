@@ -86,23 +86,22 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Video Placeholder */}
+        {/* Video Embed */}
         <div className="w-full max-w-3xl mx-auto mt-10 px-4">
-          <div className="relative w-full rounded-2xl overflow-hidden bg-[#111111]/80 backdrop-blur-sm border border-[#1f1f1f]" style={{ aspectRatio: '16/9' }}>
-
-            {/* Play button centered */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#DC2626] flex items-center justify-center cursor-pointer hover:bg-[#b91c1c] hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg shadow-[#DC2626]/30">
-                <Play className="w-7 h-7 md:w-8 md:h-8 text-white ml-1" fill="white" />
-              </div>
-            </div>
-
-            {/* Video label */}
-            <div className="absolute bottom-4 left-0 right-0 text-center">
-              <span className="text-[#A0A0A0] text-sm">Watch Ivan's Story</span>
-            </div>
-
+          <div
+            className="relative w-full rounded-2xl overflow-hidden bg-[#111111] border border-[#1f1f1f]"
+            style={{ aspectRatio: '16/9' }}
+          >
+            <iframe
+              src="https://player.vimeo.com/video/1172764242?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&controls=1&title=0&byline=0&portrait=0"
+              className="absolute inset-0 w-full h-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="Ivan's Story"
+            />
           </div>
+          <p className="text-[#A0A0A0] text-sm text-center mt-3">Watch Ivan's Story</p>
         </div>
       </div>
     </section>

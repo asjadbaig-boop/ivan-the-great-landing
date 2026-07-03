@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const CARDS = [
   {
@@ -10,7 +11,6 @@ const CARDS = [
     number: '02',
     title: 'Pricing & Brand Strategy',
     body: "How to confidently raise your prices, communicate your value, and attract clients who don't flinch at premium rates.",
-    active: true,
   },
   {
     number: '03',
@@ -35,6 +35,8 @@ const CARDS = [
 ]
 
 export default function WhatYouGet() {
+  const [activeCard, setActiveCard] = useState(null)
+
   return (
     <section id="what-you-get" className="bg-[#0a0a0a]/60 px-5 py-16 md:px-8 md:py-20 lg:py-28">
       <div className="max-w-6xl mx-auto">
@@ -61,8 +63,12 @@ export default function WhatYouGet() {
               viewport={{ once: true, amount: 0.3, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               whileHover={{ y: -4 }}
-              className={`group bg-card/80 backdrop-blur-sm border rounded-xl p-5 md:p-6 transition-all duration-150 hover:border-primary active:border-primary active:scale-[0.98] cursor-pointer ${
-                card.active
+              onMouseEnter={() => setActiveCard(i)}
+              onMouseLeave={() => setActiveCard(null)}
+              onTouchStart={() => setActiveCard(i)}
+              onTouchEnd={() => setTimeout(() => setActiveCard(null), 300)}
+              className={`group bg-card/80 backdrop-blur-sm border rounded-xl p-5 md:p-6 transition-all duration-150 active:scale-[0.98] cursor-pointer ${
+                activeCard === i
                   ? 'border-primary shadow-[0_0_20px_rgba(220,38,38,0.15)]'
                   : 'border-border'
               }`}

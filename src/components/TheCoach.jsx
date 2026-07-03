@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion'
-import { Camera } from 'lucide-react'
 
-const SOCIALS = ['TikTok', 'Instagram', 'YouTube', 'Facebook']
+const SOCIALS = [
+  { name: 'TikTok', href: '#' },
+  { name: 'Instagram', href: 'https://www.instagram.com/ivanthegr8_1/?hl=en' },
+  { name: 'YouTube', href: 'https://www.youtube.com/@ivanthegr8_1' },
+  { name: 'Facebook', href: '#' },
+]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -34,10 +38,16 @@ export default function TheCoach() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3, margin: '-50px' }}
             variants={fadeUp}
-            className="w-full aspect-[4/3] lg:aspect-[3/4] rounded-xl bg-[#1a1a1a] border border-border flex flex-col items-center justify-center gap-3 max-w-sm mx-auto lg:mx-0 lg:w-1/2"
+            className="relative w-full rounded-2xl overflow-hidden max-w-sm mx-auto lg:mx-0 lg:w-1/2"
+            style={{ aspectRatio: '3/4' }}
           >
-            <Camera size={36} className="text-muted" />
-            <span className="text-muted text-sm">Photo</span>
+            <img
+              src="/testimonials/Ivanface.png"
+              alt="Ivan The Great"
+              className="w-full h-full object-cover object-top"
+            />
+            {/* Subtle bottom gradient */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
           </motion.div>
 
           <motion.div
@@ -76,11 +86,13 @@ export default function TheCoach() {
             <div className="mt-7 flex flex-wrap gap-2">
               {SOCIALS.map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 rounded-full border border-[#333] text-white text-sm font-medium hover:border-primary hover:text-primary active:border-primary active:text-primary transition-colors"
                 >
-                  {social}
+                  {social.name}
                 </a>
               ))}
             </div>
